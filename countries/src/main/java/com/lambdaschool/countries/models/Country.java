@@ -10,7 +10,7 @@ public class Country {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long countryid;
     private String name;
-    private int population;
+    private long population;
     private int landmasskm2;
     private int medianage;
 
@@ -37,11 +37,11 @@ public class Country {
         this.name = name;
     }
 
-    public int getPopulation() {
+    public long getPopulation() {
         return population;
     }
 
-    public void setPopulation(int population) {
+    public void setPopulation(long population) {
         this.population = population;
     }
 
