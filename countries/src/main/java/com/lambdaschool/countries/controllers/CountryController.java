@@ -60,5 +60,16 @@ public class CountryController {
         return new ResponseEntity<>(countryList.get(0), HttpStatus.OK);
     }
 
+    @GetMapping(value ="/population/median", produces = {"application/json"})
+    public ResponseEntity<?>  medianPopulation() {
+        List<Country> countryList = new ArrayList<>();
+        countryrepos.findAll().iterator().forEachRemaining(countryList::add);
+        countryList.sort((c1, c2) -> Long.compare(c1.getPopulation(), c2.getPopulation()));
 
+        if(countryList.size() % 2 != 0) {
+            return new ResponseEntity<>(countryList.get(countryList.size()/2), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("No median country found", HttpStatus.OK);
+        }
+    }
 }
