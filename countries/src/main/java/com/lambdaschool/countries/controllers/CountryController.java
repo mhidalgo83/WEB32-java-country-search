@@ -31,7 +31,7 @@ public class CountryController {
         List<Country> countryList = new ArrayList<>();
         countryrepos.findAll().iterator().forEachRemaining(countryList::add);
         countryList.sort((c1, c2) -> c1.getName().compareToIgnoreCase(c2.getName()));
-        List<Country> filteredList = countryList.stream().filter(c -> c.getName().charAt(0) == letter).collect(Collectors.toList());
+        List<Country> filteredList = countryList.stream().filter(c -> c.getName().toLowerCase().charAt(0) == letter).collect(Collectors.toList());
         return new ResponseEntity<>(filteredList, HttpStatus.OK);
     }
 
